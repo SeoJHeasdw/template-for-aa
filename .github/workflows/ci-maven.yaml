@@ -1,6 +1,9 @@
 name: Java CI with Maven
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 
 env:
   IMAGE_NAME: sjh-api  # 이전에 지정한 이미지 이름으로 수정
