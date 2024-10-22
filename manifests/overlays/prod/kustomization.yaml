@@ -4,7 +4,7 @@ namePrefix: prod-
 
 configMapGenerator:
 - files:
-  - application.yml
+  - application.yaml  # 확장자를 'yaml'로 맞춤
   name: cloud-sample-configmap
 
 resources:
