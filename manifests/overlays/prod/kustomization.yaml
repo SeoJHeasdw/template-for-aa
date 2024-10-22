@@ -13,9 +13,13 @@ resources:
 - deployment.yaml
 - ingress.yaml
 
-patchesStrategicMerge:
-- deployment.yaml
-- ingress.yaml
+patches:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: sjh-api
+  path: deployment-patch.yaml  # 필요시 패치 파일
 
 images:
 - name: ceappacr.azurecr.io/sjh-api
