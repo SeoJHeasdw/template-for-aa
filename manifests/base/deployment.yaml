@@ -1,38 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sjh-api  # 서비스 이름을 sjh-api로 변경
+  name: cloud-sample
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sjh-api  # 레이블 추가
+      app: cloud-sample  # 이 레이블은 서비스의 selector와 일치해야 합니다.
   template:
     metadata:
       labels:
-        app: sjh-api  # 레이블 추가
+        app: cloud-sample  # 이 레이블도 일치해야 합니다.
     spec:
       containers:
-        - name: sjh-api  # 컨테이너 이름을 sjh-api로 변경
-          image: cepgbaseacr.azurecr.io/sjh-api:${{ steps.gen-version.outputs.VERSION }}  # 이미지 이름 및 태그
-          command: ["java", "-jar", "/app.jar"]
-          args: ["--spring.config.location=file:/config/application.yml"]
-          volumeMounts:
-          - mountPath: /mnt/cloud-sample
-            name: cloud-sample-volume
-            readOnly: false
-            subPath: cloud-sample
-          - mountPath: /config
-            name: application-properties
-            readOnly: true
-      volumes:
-      - name: cloud-sample-volume
-        persistentVolumeClaim:
-          claimName: cepg-aa-std-pvc
-      - name: application-properties
-        configMap:
-          name: cloud-sample-configmap
-          items:
-            - key: application.yml
-              path: application.yml
-          defaultMode: 420
+        - name: cloud-sample
+          image: cepgbaseacr.azurecr.io/sjh-api:latest  # 기본 이미지 설정
+          ports:
+            - containerPort: 8080
