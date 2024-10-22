@@ -5,13 +5,13 @@ metadata:
 spec:
   ingressClassName: ingress-internal  # 사용하려는 Ingress 클래스 이름
   rules:
-  - host: 82262800.cepg-aa.kubepia.net  # 사용자 정의 도메인으로 수정 (예시: 자신의 API 도메인)
+  - host: 82262800.cepg-aa.kubepia.net  # 사용자 정의 도메인으로 수정
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: cloud-sample  # 서비스 이름
+            name: sjh-api  # 서비스 이름을 sjh-api로 변경
             port:
               number: 8080  # 서비스 포트

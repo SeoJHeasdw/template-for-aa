@@ -10,6 +10,8 @@ configMapGenerator:
 resources:
 - ../../base
 - pvc.yaml
+- deployment.yaml
+- ingress.yaml
 
 patchesStrategicMerge:
 - deployment.yaml
