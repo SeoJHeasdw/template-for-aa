@@ -3,9 +3,9 @@ kind: Kustomization
 namePrefix: prod-
 
 configMapGenerator:
-- name: cloud-sample-configmap
-  files:
-    - application.yml
+- files:
+  - application.yml
+  name: cloud-sample-configmap
 
 resources:
 - ../../base
@@ -16,5 +16,7 @@ patchesStrategicMerge:
 - ingress.yaml
 
 images:
+- name: ceappacr.azurecr.io/sjh-api
+  newTag: "202410220848"
 - name: cepgbaseacr.azurecr.io/sjh-api
-  newTag: "${{ steps.gen-version.outputs.VERSION }}"
+  newTag: ${{ steps.gen-version.outputs.VERSION }}
