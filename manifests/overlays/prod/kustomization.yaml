@@ -17,6 +17,6 @@ patchesStrategicMerge:
 
 images:
 - name: ceappacr.azurecr.io/sjh-api
-  newTag: "202410220848"
+  newTag: "202410220918"
 - name: cepgbaseacr.azurecr.io/sjh-api
   newTag: ${{ steps.gen-version.outputs.VERSION }}
