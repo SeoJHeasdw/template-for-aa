@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sjh-api
+spec:
+  template:
+    spec:
+      containers:
+      - name: sjh-api
+        image: cepgbaseacr.azurecr.io/sjh-api:${{ steps.gen-version.outputs.VERSION }}  # CI에서 생성한 이미지 태그 사용
+        volumeMounts:
+        - mountPath: /mnt/cloud-sample
+          name: cloud-sample-volume
+          readOnly: false
+          subPath: cloud-sample
+        - mountPath: /config
+          name: application-properties
+          readOnly: true
