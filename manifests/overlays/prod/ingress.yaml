@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cloud-sample-ingress
+spec:
+  ingressClassName: ingress-internal  # 사용하려는 Ingress 클래스 이름
+  rules:
+  - host: 82262800.cepg-aa.kubepia.net  # 사용자 정의 도메인으로 수정 (예시: 자신의 API 도메인)
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cloud-sample  # 서비스 이름
+            port:
+              number: 8080  # 서비스 포트

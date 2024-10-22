@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://ce-aa-psql.postgres.database.azure.com:5432/postgres  # DB URL 수정
+    username: ktds  # DB 사용자명
+    password: Ktds!1234  # DB 비밀번호
+    hikari:
+      maximum-pool-size: 2  # 최대 커넥션 수
+      minimum-idle: 2  # 최소 유휴 커넥션 수
+  jpa:
+    show-sql: true  # SQL 쿼리 로그 출력
+    hibernate:
+      ddl-auto: update  # 스키마 자동 업데이트 설정
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect  # PostgreSQL 방언
+        format_sql: true  # 포맷된 SQL 출력
+  sql:
+    init:
+      mode: embedded  # 초기화 모드
+
+server:
+  port: 8080  # 서버 포트 설정
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # 모든 관리 엔드포인트 노출
+
+pvc:
+  path: /mnt/cloud-sample  # PVC 마운트 경로

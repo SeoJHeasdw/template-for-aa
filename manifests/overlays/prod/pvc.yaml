@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cepg-aa-std-pvc  # PVC 이름 유지
+spec:
+  accessModes:
+    - ReadWriteMany  # 여러 Pod에서 읽고 쓸 수 있는 접근 모드
+  storageClassName: ce-aa-rwmany  # Storage Class 이름을 환경에 맞게 수정
+  resources:
+    requests:
+      storage: 1Gi  # 요청 스토리지 크기
