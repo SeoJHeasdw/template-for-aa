@@ -2,11 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sjh-api
-  namespace: "82262800"  # 숫자를 문자열로 처리
 spec:
-  type: LoadBalancer
+  type: LoadBalancer  # 외부 IP를 할당받기 위한 설정
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 80        # 외부에서 접근할 포트
+      targetPort: 8080  # 컨테이너에서 노출할 포트
   selector:
-    app: sjh-api
+    app: sjh-api  # Deployment에서 설정한 레이블과 일치해야 함
